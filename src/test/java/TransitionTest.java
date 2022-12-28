@@ -4,11 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import PageObject.HomePage;
-import PageObject.LoginPage;
-import PageObject.ProfilePage;
-
-
+import pageobject.HomePage;
+import pageobject.LoginPage;
+import pageobject.ProfilePage;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.Assert.assertEquals;
@@ -24,10 +22,7 @@ public class TransitionTest {
 
     @Parameterized.Parameters(name = "{0} browser")
     public static Object[][] browserForTest() {
-        return new Object[][]{
-                {"Chrome"},
-                {"Yandex"}
-        };
+        return new Object[][]{{"Chrome"}, {"Yandex"}};
     }
 
     @Before
@@ -40,7 +35,7 @@ public class TransitionTest {
     }
 
     @After
-    public void cleanUp(){
+    public void cleanUp() {
         browser.tearDown();
     }
 
@@ -51,8 +46,7 @@ public class TransitionTest {
         main.clickPersonalAccountButton();
         ProfilePage personalPage = page(ProfilePage.class);
         personalPage.waitAfterTransition();
-        assertEquals("После нажатия на кнопку пользователь должен попасть на страницу личного кабинета!",
-                url(), Config.ACCOUNT_PAGE_URL);
+        assertEquals("После нажатия на кнопку пользователь должен попасть на страницу личного кабинета!", Config.ACCOUNT_PAGE_URL, url());
     }
 
     @Test
@@ -63,8 +57,7 @@ public class TransitionTest {
         ProfilePage personalPage = page(ProfilePage.class);
         personalPage.waitAfterTransition();
         personalPage.clickTheConstructorButton();
-        assertEquals("После нажатия на кнопку конструктор пользователь должен попасть на главную страницу!",
-                url(), Config.MAIN_PAGE_URL);
+        assertEquals("После нажатия на кнопку конструктор пользователь должен попасть на главную страницу!", Config.MAIN_PAGE_URL, url());
     }
 
     @Test
@@ -75,8 +68,7 @@ public class TransitionTest {
         ProfilePage personalPage = page(ProfilePage.class);
         personalPage.waitAfterTransition();
         personalPage.clickTheLogo();
-        assertEquals("После нажатия на логотип пользователь должен попасть на главную страницу!",
-                url(), Config.MAIN_PAGE_URL);
+        assertEquals("После нажатия на логотип пользователь должен попасть на главную страницу!", Config.MAIN_PAGE_URL, url());
     }
 
     @Test
@@ -88,8 +80,7 @@ public class TransitionTest {
         personalPage.waitAfterTransition();
         personalPage.clickTheLogOutButton();
         personalPage.waitAfterLogOut();
-        assertEquals("После нажатия на кнопку выхода пользователь должен попасть на страницу входа!",
-                url(), Config.LOGIN_PAGE_URL);
+        assertEquals("После нажатия на кнопку выхода пользователь должен попасть на страницу входа!", Config.LOGIN_PAGE_URL, url());
     }
 
 }

@@ -4,11 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import PageObject.ForgotPasswordPage;
-import PageObject.LoginPage;
-import PageObject.HomePage;
-import PageObject.RegistrationPage;
-
+import pageobject.ForgotPasswordPage;
+import pageobject.LoginPage;
+import pageobject.HomePage;
+import pageobject.RegistrationPage;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.Assert.assertEquals;

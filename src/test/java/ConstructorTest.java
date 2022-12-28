@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import PageObject.HomePage;
-
+import pageobject.HomePage;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.Assert.assertTrue;
 
@@ -19,10 +18,7 @@ public class ConstructorTest {
 
     @Parameterized.Parameters(name = "{0} browser")
     public static Object[][] browserForTest() {
-        return new Object[][]{
-                {"Chrome"},
-                {"Yandex"}
-        };
+        return new Object[][]{{"Chrome"}, {"Yandex"}};
     }
 
     @Before
@@ -31,7 +27,7 @@ public class ConstructorTest {
     }
 
     @After
-    public void cleanUp(){
+    public void cleanUp() {
         browser.tearDown();
     }
 
