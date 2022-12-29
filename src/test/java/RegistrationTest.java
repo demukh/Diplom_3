@@ -10,15 +10,11 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 @RunWith(Parameterized.class)
 public class RegistrationTest {
-
     Browser browser;
-
     @Parameterized.Parameter
     public String Browser;
-
     @Parameterized.Parameters(name = "{0} browser")
     public static Object[][] browserForTest() {
         return new Object[][]{
@@ -26,18 +22,15 @@ public class RegistrationTest {
                 {"Yandex"}
         };
     }
-
     @Before
     public void setUp() {
         browser = new Browser(Browser);
 
     }
-
     @After
     public void cleanUp() {
         browser.tearDown();
     }
-
     @Test
     @DisplayName("Успешная регистрация")
     public void checkTheCorrectRegistration() {
@@ -49,7 +42,6 @@ public class RegistrationTest {
         assertEquals("После успешной регистрации пользователь должен попасть на страницу авторизации",
                 url(), Config.LOGIN_PAGE_URL);
     }
-
     @Test
     @DisplayName("Регистрация с некорректным паролем")
     public void checkTheRegistrationWithInvalidPassword() {

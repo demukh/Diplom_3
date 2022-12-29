@@ -7,6 +7,4 @@ public class Config {
     public static final String BASIC_PASSWORD = "123456";
     public static final String INCORRECT_PASSWORD = "123";
     public static final String BASIC_EMAIL = "demukhsasha@mail.ru";
-
-
 }

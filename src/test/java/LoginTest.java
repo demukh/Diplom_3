@@ -11,19 +11,15 @@ import pageobject.RegistrationPage;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.Assert.assertEquals;
-
 @RunWith(Parameterized.class)
 public class LoginTest {
     HomePage main = page(HomePage.class);
     LoginPage login = page(LoginPage.class);
     RegistrationPage register = page(RegistrationPage.class);
     ForgotPasswordPage forgotPasswordPage = page(ForgotPasswordPage.class);
-
     Browser browser;
-
     @Parameterized.Parameter
     public String Browser;
-
     @Parameterized.Parameters(name = "{0} browser")
     public static Object[][] browserForTest() {
         return new Object[][]{
@@ -36,12 +32,10 @@ public class LoginTest {
     public void setUp() {
         browser = new Browser(Browser);
     }
-
     @After
     public void cleanUp(){
         browser.tearDown();
     }
-
     @Test
     @DisplayName("Вход с главной страницы через кнопку Войти в аккаунт")
     public void loginFromMainPageButton() {
@@ -51,7 +45,6 @@ public class LoginTest {
         assertEquals("Пользователь должен попасть на главную страницу",
                 Config.MAIN_PAGE_URL, url());
     }
-
     @Test
     @DisplayName("Вход с главной страницы через Личный кабинет")
     public void loginFromAccountButton() {
@@ -61,7 +54,6 @@ public class LoginTest {
         assertEquals("Пользователь должен попасть на главную страницу",
                 Config.MAIN_PAGE_URL, url());
     }
-
     @Test
     @DisplayName("Вход со страницы регистрации через кнопку Войти")
     public void loginFromRegistrationPage() {
@@ -71,7 +63,6 @@ public class LoginTest {
         assertEquals("Пользователь должен попасть на главную страницу",
                 Config.MAIN_PAGE_URL, url());
     }
-
     @Test
     @DisplayName("Переход со страницы восстановления пароля")
     public void loginFromForgotPasswordPage() {
@@ -81,5 +72,4 @@ public class LoginTest {
         assertEquals("Пользователь должен попасть на главную страницу",
                 Config.MAIN_PAGE_URL, url());
     }
-
 }

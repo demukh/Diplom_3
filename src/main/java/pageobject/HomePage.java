@@ -3,8 +3,6 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
-
 public class HomePage {
     @FindBy(how = How.XPATH, using = ".//button[text()='Войти в аккаунт']")
     private SelenideElement accountEntryButton;
@@ -38,24 +36,20 @@ public class HomePage {
     private SelenideElement fillingForDrop;
     @FindBy(how = How.XPATH, using = ".//span[text()='Хрустящие минеральные кольца']")
     private SelenideElement fillingInBasket;
-
     @Step("Клик по кнопке войти в аккаунт")
     public void clickAccountEntryButton() {
         accountEntryButton.click();
     }
-
     @Step("Клик по кнопке Личный кабинет")
     public void clickPersonalAccountButton() {
         personalAccountButton.click();
     }
-
     @Step("Клик по кнопке Начинки")
     public boolean clickFillingButtonAndCheckTheSign() {
         fillingsButton.click();
         fillingForDrop.dragAndDropTo(orderBasket);
         return fillingInBasket.isDisplayed();
     }
-
     @Step("Клик по кнопке Соусы")
     public boolean clickSaucesButtonAndCheckTheSign() {
         lastIngredient.scrollIntoView(true);
@@ -63,7 +57,6 @@ public class HomePage {
         sauceForDrop.dragAndDropTo(orderBasket);
         return sauceInBasket.isDisplayed();
     }
-
     @Step("Клик по кнопке Булки")
     public boolean clickBunsButtonCheckTheSign() {
         lastIngredient.scrollIntoView(true);
@@ -71,5 +64,4 @@ public class HomePage {
         bunForDrop.dragAndDropTo(orderBasket);
         return bunInBasket.isDisplayed();
     }
-
 }

@@ -10,21 +10,15 @@ import pageobject.ProfilePage;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.Assert.assertEquals;
-
-
 @RunWith(Parameterized.class)
 public class TransitionTest {
-
     Browser browser;
-
     @Parameterized.Parameter
     public String Browser;
-
     @Parameterized.Parameters(name = "{0} browser")
     public static Object[][] browserForTest() {
         return new Object[][]{{"Chrome"}, {"Yandex"}};
     }
-
     @Before
     public void setUp() {
         browser = new Browser(Browser);
@@ -33,12 +27,10 @@ public class TransitionTest {
         LoginPage login = page(LoginPage.class);
         login.entry(Config.BASIC_EMAIL, Config.BASIC_PASSWORD);
     }
-
     @After
     public void cleanUp() {
         browser.tearDown();
     }
-
     @Test
     @DisplayName("Переход на страницу личного кабинета с главной страницы")
     public void checkTheTransitionToThePersonalAccountPage() {
@@ -48,7 +40,6 @@ public class TransitionTest {
         personalPage.waitAfterTransition();
         assertEquals("После нажатия на кнопку пользователь должен попасть на страницу личного кабинета!", Config.ACCOUNT_PAGE_URL, url());
     }
-
     @Test
     @DisplayName("Переход на главную страницу после нажатия кнопки конструктора")
     public void checkTheTransitionConstructorButton() {
@@ -59,7 +50,6 @@ public class TransitionTest {
         personalPage.clickTheConstructorButton();
         assertEquals("После нажатия на кнопку конструктор пользователь должен попасть на главную страницу!", Config.MAIN_PAGE_URL, url());
     }
-
     @Test
     @DisplayName("Переход на главную страницу после нажатия на логотип")
     public void checkTheTransitionLogo() {
@@ -70,7 +60,6 @@ public class TransitionTest {
         personalPage.clickTheLogo();
         assertEquals("После нажатия на логотип пользователь должен попасть на главную страницу!", Config.MAIN_PAGE_URL, url());
     }
-
     @Test
     @DisplayName("Переход на страницу входа после нажатия на кнопку выхода из системы")
     public void checkTheTransitionLogOut() {
@@ -82,5 +71,4 @@ public class TransitionTest {
         personalPage.waitAfterLogOut();
         assertEquals("После нажатия на кнопку выхода пользователь должен попасть на страницу входа!", Config.LOGIN_PAGE_URL, url());
     }
-
 }

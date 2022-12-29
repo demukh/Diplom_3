@@ -4,22 +4,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-
-
 import java.time.Duration;
-
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
-
 public class Browser {
-
     ChromeDriver driver;
     WebDriverWait wait;
-
     public Browser(String browser) {
         if (browser.equals("Yandex")) {
             System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver.exe");
-
-
         } else {
             System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         }
@@ -28,9 +20,7 @@ public class Browser {
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         setWebDriver(driver);
-
     }
-
     @Step("Закрытие браузера")
     public void tearDown() {
         driver.quit();
